@@ -21,6 +21,7 @@ async function getAllUrls(req, res){
 }
 
 async function visitShortUrl(req, res){
+    console.log("wwwwwwwwwwwwwwwwwwwwww")
     const shortId = req.params.shortId;
     
     const urlObj = await Url.findOneAndUpdate({shortId},{

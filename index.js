@@ -29,4 +29,4 @@ app.use("/api/user", require("./routes/user"));
 app.use("/api/url", require("./routes/url"));
 
 
-app.listen(PORT, () => console.log(`server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`server running on port ${PORT}`)); 

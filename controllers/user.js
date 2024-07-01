@@ -21,13 +21,34 @@ async function userLogin(req, res){
     }
     const token = setUser(user);
     //console.log(token);
-    res.cookie("uid", token);
+    res.cookie("token", token);
     return res.redirect("/");
 
     //return res.json({token});
 }
 
+async function getUserByQuery(req, res){
+
+    try {
+        const query = {};
+
+        for (const [key, value] of Object.entries(req.query)) {
+            query[key] = value
+        }
+
+        console.log("query", query);
+        
+
+        const users = await User.find(query,{_id: 0, role: 0});
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+    
+}
+
 module.exports = {
     userSignup,
-    userLogin
+    userLogin,
+    getUserByQuery
 }
