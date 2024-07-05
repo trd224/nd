@@ -32,8 +32,13 @@ async function getUserByQuery(req, res){
     try {
         const query = {};
 
-        for (const [key, value] of Object.entries(req.query)) {
-            query[key] = value
+        // for (const [key, value] of Object.entries(req.query)) {
+        //     query[key] = value
+        // }
+
+        for(let key in req.query){
+            console.log(key)
+            query[key] = req.query[key]
         }
 
         console.log("query", query);
